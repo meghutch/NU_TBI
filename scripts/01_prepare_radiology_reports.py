@@ -3,7 +3,6 @@
 # Objective: Merge the suidDFFound.csv (brain image metadata) with post_traumatic_hemorrhage_search.xlsx (annotated for trauma and hemorrhage)
 # Output: data/processed/suid_rad_reports.csv
 
-import os
 import pandas as pd
 
 # remove whitespace that exists before and after strings

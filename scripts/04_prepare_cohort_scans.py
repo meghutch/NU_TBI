@@ -1,4 +1,4 @@
-# Date: 03-35-2024
+# Date: 03-25-2024
 # Author: Meghan Hutch
 # Objective: To create a clean list of folder locations for the scans to run blast-ct on
 

@@ -28,8 +28,9 @@ predictions = predictions.drop_duplicates()
 
 # manually remove problematic scan
 print('manually removing problematic scan')
+# manually remove problematic scan
 print(len(predictions))
-predictions = predictions[~(predictions['id']=='scan_5338')]
+predictions = predictions[~(predictions['id'].isin(['scan_5338', 'scan_5340', 'scan_5341']))]
 print(len(predictions))
 
 print('print unique number of patients and images', predictions[['unique_study_id', 'id', 'image']].nunique())

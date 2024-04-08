@@ -60,7 +60,13 @@ predictions = predictions[~(predictions['image'].str.contains('h60s', case = Fal
 print('print unique number of patients and images', predictions[['unique_study_id', 'id', 'image']].nunique())
 
 # remove scans with < 30 or > 100 slices
+# manually select scan we want to keep
+predictions_scan_5339 = predictions[predictions['id']=='scan_5339']
+
 predictions = predictions[~((predictions['slice_num'] < 30) | (predictions['slice_num'] >= 100))]
+
+## Add back scan
+predictions = pd.concat([predictions, predictions_scan_5339])
 
 # determine max number of slices for each unique combination
 predictions['max_slice'] = predictions.groupby(['unique_study_id', 'scan_number', 'image_name'])['slice_num'].transform('max')

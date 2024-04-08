@@ -26,6 +26,12 @@ pd.set_option('display.max_rows', 200)
 predictions = pd.read_csv('data/processed/prepped_predictions.csv')
 predictions = predictions.drop_duplicates()
 
+# manually remove problematic scan
+print('manually removing problematic scan')
+print(len(predictions))
+predictions = predictions[~(predictions['id']=='scan_5338')]
+print(len(predictions))
+
 print('print unique number of patients and images', predictions[['unique_study_id', 'id', 'image']].nunique())
 
 # format the quality_control_metric
@@ -454,4 +460,4 @@ print('printing final prediction numbers', tbi_predictions_clean_final[['unique_
 
 ### Save predictions
 print('saving cleaned up predictions')
-tbi_predictions_clean.to_csv('data/processed/tbi_cohort/0_initial_tbi_scans_volumes_v3.csv', index = False)
+tbi_predictions_clean_final.to_csv('data/processed/tbi_cohort/0_initial_tbi_scans_volumes_v3.csv', index = False)

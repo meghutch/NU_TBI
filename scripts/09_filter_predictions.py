@@ -62,17 +62,25 @@ print('print unique number of patients and images', predictions[['unique_study_i
 # remove scans with < 30 or > 100 slices
 # manually select scan we want to keep
 predictions_scan_5339 = predictions[predictions['id']=='scan_5339']
+predictions_scan_5414 = predictions[predictions['id']=='scan_5414']
+predictions_scan_7331 = predictions[predictions['id']=='scan_7331']
+
 
 predictions = predictions[~((predictions['slice_num'] < 30) | (predictions['slice_num'] >= 100))]
 
 ## Add back scan
 predictions = pd.concat([predictions, predictions_scan_5339])
+predictions = pd.concat([predictions, predictions_scan_5414])
+predictions = pd.concat([predictions, predictions_scan_7331])
 
 # determine max number of slices for each unique combination
 predictions['max_slice'] = predictions.groupby(['unique_study_id', 'scan_number', 'image_name'])['slice_num'].transform('max')
 
 # remove cases where the max_slice number less than 30 for all the images of a specific image type (e.g. 'image_name')
-predictions_filtered = predictions[~(predictions['max_slice'] < 30)].copy()
+#predictions_filtered = predictions[~(predictions['max_slice'] < 30)].copy()
+# update- April 10, 2024: max_slice column is not relevant as pre-filtering removed all but two images < 30 slices (e.g. scan_5414 and scan_7331 which has 28 slices and in which we manually added back in)
+predictions_filtered = predictions.copy()
+predictions_filtered[['unique_study_id', 'id', 'image']].nunique()
 
 print('print unique number of patients and images', predictions[['unique_study_id', 'id', 'image']].nunique())
 

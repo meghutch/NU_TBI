@@ -128,4 +128,4 @@ tbi_scans_all_preds = pd.merge(tbi_scans_all_preds,
                                how = 'inner')
 
 # save prepared_predictions for further processing
-tbi_scans_all_preds.to_csv('data/processed/prepped_predictions_v2.csv', index = False)
+tbi_scans_all_preds.to_csv('data/processed/prepped_predictions.csv', index = False)

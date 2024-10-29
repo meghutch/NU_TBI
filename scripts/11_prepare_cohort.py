@@ -502,10 +502,10 @@ print('Number of unique patients for modeling (first scan for modeling):', tbi_c
 
 # v3 saved on 6.05.2024 with cleaned up injury labels
 # saved on 6.14.2024 with cleaned up surgery labels
-#tbi_cohort_clean_to_model.to_csv('data/modeling/tbi_data_first_scan_v3.csv', index = False)
-#tbi_cohort_clean_to_model.to_csv('data/modeling/tbi_data_all_scans_v3.csv', index = False)
+tbi_cohort_clean_to_model_first.to_csv('data/modeling/tbi_data_first_scan_v3.csv', index = False)
+tbi_cohort_clean_to_model.to_csv('data/modeling/tbi_data_all_scans_v3.csv', index = False)
 
 # to check outputs are the same
 # ran on 10/28/2024
-# tbi_cohort_clean_to_model.to_csv('data/modeling/TO_CHECK_tbi_data_first_scan_v3.csv', index = False)
+# tbi_cohort_clean_to_model_first.to_csv('data/modeling/TO_CHECK_tbi_data_first_scan_v3.csv', index = False)
 # tbi_cohort_clean_to_model.to_csv('data/modeling/TO_CHECK_tbi_data_all_scans_v3.csv', index = False)
